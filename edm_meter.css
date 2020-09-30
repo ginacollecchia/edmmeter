@@ -1,0 +1,406 @@
+/*  FONTS
+~-----------------------------------------*/
+#edm-meter {
+  font-family: @functionProMediumFont;
+  font-weight: normal;
+  font-style: normal; 
+  background: black;
+  color: #fc0000;
+}
+
+/*  TEXT below "TAP IT OUT" title
+~-----------------------------------------*/
+#subheading p {
+  font-weight: bold;
+  font-size: 32pt;
+  color: #fc0000;
+  position: relative;
+  line-height: 100%;
+}
+
+#howto p {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 12pt;
+  color: #e3e3e3;
+  position: relative;
+  text-align: left;
+}
+
+/* METER POSITION + STUFF ON THE METER
+~----------------------------------------*/
+#meter-container {
+  position: relative;
+  height: 460px;
+  width: 604px;
+}
+
+p {
+  color: #e3e3e3;     
+}
+
+img#bpmframe {
+  width: 604px;
+  margin-top: 10px;
+}
+
+/*  MUTE BUTTON
+~-----------------------------------------*/
+
+button.mute {
+  background: url('/assets/edm_meter/unmutebutton.png');
+	position: absolute;
+  top: 20px;
+  left: 500px;
+	width: 48px;
+	height: 42px;
+	border: none;
+}
+
+button.mute.muted {
+	background: url('/assets/edm_meter/mutebutton.png');
+}
+
+button.mute.unmuted {
+  background: url('/assets/edm_meter/unmutebutton.png');
+}
+
+#needle {
+  -webkit-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -webkit-transition: -webkit-transform 0.1s ease-in-out;
+  -ms-transition: -ms-transform 0.1s ease-in-out;
+  -moz-transition: -moz-transform 0.1s ease-in-out;
+  position: absolute;
+  left: 290px; 
+  top: 63px;
+  width: 25px; 
+}
+
+/*  TAP BUTTON
+~-----------------------------------------*/
+
+#tap {
+  width: 100px;
+  height: 102px;
+  background: url('/assets/edm_meter/tapbutton_up.png');
+  border: none;
+  position: absolute;
+  top: 265px; 
+  left: 251px;
+  outline: none;
+}
+
+button.tapped#tap {
+  background: url('/assets/edm_meter/tapbutton_down.png');
+}
+
+/*  ### BPM (text)
+~-----------------------------------------*/
+
+h1#bpm {
+  position: absolute;
+  top: 380px; 
+  left: 380px;
+  width: 180px; 
+  text-align: right;
+  font-size: 24pt;
+  font-style: bold;
+  background-color: #11b8e1;
+  border-radius: 10px;
+  padding-right: 20px;
+  /* height: 25px; */
+}
+
+/* WEDGES POSITIONING 
+~-----------------------------------------*/
+
+.bpm {
+  position: absolute;
+  top: 45px;
+  left: 4px;
+  width: 550px;
+  height: 300px;
+  border: none;
+  -webkit-transition: background 0.1s;
+  -ms-transition: background 0.1s;
+  -moz-transition: background 0.1s;
+}
+
+/*  PRELOAD THE WEDGES
+    make 'em invisible
+~-----------------------------------------*/
+
+.preld {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/*  WEDGE STATES (3)
+~-----------------------------------------*/
+
+#bpm1 { background: url('/assets/edm_meter/1stbpm_off.png'); }
+#bpm1.on { background: url('/assets/edm_meter/1stbpm_on2.png'); }
+#bpm1.on.highlighted { background: url('/assets/edm_meter/1stbpm_on1.png'); }
+#bpm2 { background: url('/assets/edm_meter/2ndbpm_off.png'); }
+#bpm2.on { background: url('/assets/edm_meter/2ndbpm_on2.png'); }
+#bpm2.on.highlighted { background: url('/assets/edm_meter/2ndbpm_on1.png'); }
+#bpm3 { background: url('/assets/edm_meter/3rdbpm_off.png'); }
+#bpm3.on { background: url('/assets/edm_meter/3rdbpm_on2.png'); }
+#bpm3.on.highlighted { background: url('/assets/edm_meter/3rdbpm_on1.png'); }
+#bpm4 { background: url('/assets/edm_meter/4thbpm_off.png'); }
+#bpm4.on { background: url('/assets/edm_meter/4thbpm_on2.png'); }
+#bpm4.on.highlighted { background: url('/assets/edm_meter/4thbpm_on1.png'); } 
+#bpm5 { background: url('/assets/edm_meter/5thbpm_off.png'); }
+#bpm5.on { background: url('/assets/edm_meter/5thbpm_on2.png'); }
+#bpm5.on.highlighted { background: url('/assets/edm_meter/5thbpm_on1.png'); }
+#bpm6 { background: url('/assets/edm_meter/6thbpm_off.png'); }
+#bpm6.on { background: url('/assets/edm_meter/6thbpm_on2.png'); }
+#bpm6.on.highlighted { background: url('/assets/edm_meter/6thbpm_on1.png'); }
+
+#textoverlay {
+  position:absolute;
+  top: 42px;
+	left: 28px;
+  width: 550px;
+}
+
+#whatisbpm {
+  font-weight: bold;
+  font-size: 20pt;
+  color: #ffd600;
+}
+
+/*  SIDEBAR
+~-----------------------------------------*/
+
+.exvideotitle {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+}
+
+.exvideotitle p {
+  color: #ffd600;
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+#video-container,
+#blurb-container {
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+#video-container iframe {
+  width: 100%;
+}
+
+#blurb-container h2,
+#video-container h2 {
+  font-size: 25px;
+  line-height: 26px;
+}
+.examplevideo p {
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
+/*  GENRES (in blurb-container)
+~-----------------------------------------*/
+
+.blurbtitle, .blurb {
+	display: none;
+}
+
+.blurb.active, .blurbtitle.active {
+	display: block;
+}
+
+.blurbtitle p {
+  color: #ffd600;
+}
+
+/*  BLURB BUTTONS
+    blue buttons on the meter
+~-----------------------------------------*/
+
+button.bpmmeter {
+  background: url('/assets/edm_meter/blurbbutton.png');
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+button.bpmmeter.highlighted {
+  background-image: url('/assets/edm_meter/blurbbutton_hover.png');
+}
+
+button.bpmmeter.clicked {
+  background-image: url('/assets/edm_meter/blurbbutton_tapped.png');
+}
+
+button.bpmmeter.unclicked {
+  background-image: url('/assets/edm_meter/blurbbutton.png');
+} 
+
+button#video1 {
+  top: 255px;
+  left: 52px; /* 60 bpm = 12 degrees */
+}
+button#video2 {
+  top: 217px;
+  left: 63px; /* 68 bpm */
+}
+button#video3 {
+  /* 86 bpm */
+  top: 136px; 
+  left: 112px;
+}
+button#video4 {
+  /* 91 BPM */
+  top: 119px;
+  left: 130px;
+}
+button#video5 {
+  top: 90px; /* 100 bpm */
+  left: 167px;
+}
+button#video6 {
+  /* 102 bpm */
+  top: 85px;
+  left: 176px;
+}
+button#video7 {
+  /* 108 bpm */
+  top: 73px; 
+  left: 203px;
+}
+button#video8 {
+  /* 110 bpm */
+  top: 68px; 
+  left: 216px;
+}
+button#video9 {
+  /* 120 bpm */
+  top: 56px; 
+  left: 267px;
+}
+button#video10 {
+  /* 124 bpm */
+  top: 55px;
+  left: 285px;
+}
+button#video11 {
+  /* 135 bpm */
+  top: 60px; 
+  left: 345px;
+}
+button#video12 {
+  /* 140 bpm */
+  top: 67px; 
+  left: 371px;
+}
+button#video13 {
+  /* 144 bpm */
+  top: 73px; 
+  left: 388px;
+}
+button#video14 {
+  /* 170 bpm */
+  top: 158px; 
+  left: 496px;
+}
+button#video15 {
+  /* 172 bpm */
+  top: 165px;
+  left: 501px;
+}
+button#video16 {
+  /* 175 bpm */
+  top: 181px; 
+  left: 511px;
+}
+
+h3.edmmeter {
+  font-size: 24px;
+  line-height: 100%;
+}
+
+label.rightside {
+  display: inline;
+  color: #e3e3e3;
+  font-size: 18px;
+  position: relative;
+  top: -4px;
+  left: 2px;
+}
+
+input[type="text"] {
+  width: 50%;
+  border-width: 5px;
+  border-color: #fc0000;
+  border-style: solid;
+}
+
+form.calculator {
+  border-color: #000;
+  display: block;
+}
+
+/*  MOBILE
+~-----------------------------------------*/
+
+@media only screen and (max-width: 600px) {
+  #meter-container {
+    position: relative;
+    height: 460px;
+    top: -115px;
+    left: -163px;
+    width: 604px;
+    -webkit-transform: scale(.5);
+    -ms-transform: scale(.5);
+    -moz-transform: scale(.5);
+    margin-bottom: -188px;  
+  }
+  #tap {
+    -webkit-transform: scale(2.1);
+    -ms-transform: scale(2.1);
+    -moz-transform: scale(2.1);
+  }
+  /* button.mute {
+    margin-top: -70px;
+  } 
+  button.bpmmeter, #video-container, .examplevideo {
+    display: none;
+  } */
+  h1#bpm {
+    font-size: 40pt;
+    width: 300px;
+    left: 150px;
+    top: 420px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 0px;
+    text-align: center;
+  }
+  input {
+    width: 120px;
+    margin-left: 50px;
+  }
+}
+
+/* COLORS 
+
+COLORS:
+turquoise - #11b8e1
+red - #fc0000
+pink - #ff6ccf
+yellow - #ffd600
+
+*/

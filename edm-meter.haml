@@ -1,0 +1,162 @@
+<!-- build:css({.tmp,app}) styles/edm_meter.css -->
+<link rel="stylesheet" href="styles/edm_meter.css">
+<!-- endbuild -->
+
+<!-- I'd like this to be djz.com/bpm/ or similar. TAP IT OUT should probably be the name of the page, too. -->
+
+#edm-meter.row
+  
+
+  .span10
+    %img#title.space-top{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/tapitout_title.png"}
+  
+    #subheading.space-top
+      %h2.main-color.red A TAP BPM METER THAT DETECTS MUSICAL TEMPO
+
+    %div{:style => "margin-bottom: 20px"}
+      %a.twitter-share-button{"data-via" => "djz", :href => "https://twitter.com/share"} Tweet
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');  
+      .fb-like{"data-colorscheme" => "dark", "data-href" => "http://www.djz.com/bpm-meter/", "data-layout" => "button_count", "data-send" => "true", "data-show-faces" => "false", "data-width" => "450", :style => "width: 130px; display: inline-block;"}
+
+
+    #howto 
+      %p Click "TAP" or press the spacebar in time with a song to measure its tempo. Wait 2 seconds to reset the BPM (displayed in blue box). You can also choose to mute the kick drum sound.
+  
+    #meter-container
+      #loader{"ng-show" => true}
+
+      %img.bpmmeter#bpmframe{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/bpmframe4.png"}
+      
+      %div.bpm#bpm1
+
+      %div.bpm#bpm2
+
+      %div.bpm#bpm3
+
+      %div.bpm#bpm4 
+   
+      %div.bpm#bpm5 
+   
+      %div.bpm#bpm6 
+      
+      %img.bpmmeter#textoverlay{ "ng-src" => '{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/textoverlay.png'}
+      
+      %button.bpmmeter#video1{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video2{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video3{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video4{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video5{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video6{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video7{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video8{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video9{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video10{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video11{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video12{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video13{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video14{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video15{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+      %button.bpmmeter#video16{"ng-mouseover"=>"lightUp($event)", "ng-mouseleave"=>"goBack($event)", "ng-click" =>"showExample($event)"}
+
+      %img.bpmmeter#needle{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/needle_light.png"}
+      
+      // %input#tapkey{"ng-keydown" => "tapkey()", "ng-keyup" => "untapkey()"}
+      
+	  <!-- WEB AUDIO BITS -->
+      %button.mute#mutebutton{"ng-click"=>"mute($event)"}
+
+      %button#tap{"ng-mousedown" =>"tap()", "ng-mouseup" =>"untap()"}
+      
+      %h1#bpm
+
+      %audio#tap-sound
+        %source{:src => "/assets/edm-meter/k_DaftRocknRoll.ogg", :type => "audio/ogg", :preload => "auto"}
+        %source{:src => "/assets/edm-meter/k_DaftRocknRoll.mp3", :type => "audio/mp3", :preload => "auto"}
+        %source{:src => "/assets/edm-meter/k_DaftRocknRoll.wav", :type => "audio/wav", :preload => "auto"}
+	  <!-- END OF WEB AUDIO BITS -->
+
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/1stbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/2ndbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/3rdbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/4thbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/5thbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/6thbpm_off.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/1stbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/2ndbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/3rdbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/4thbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/5thbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/6thbpm_on1.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/1stbpm_on2.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/2ndbpm_on2.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/3rdbpm_on2.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/4thbpm_on2.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/5thbpm_on2.png" }
+      %img.preld{"ng-src" => "{{DJZ_WEBHOST_EXTENDED()}}/assets/edm_meter/6thbpm_on2.png" }
+
+
+    .divider6.yellow
+    %h2.main-color.yellow WHAT IS BPM?
+    
+    %p "BPM" stands for "Beats Per Minute" and is the tempo of a piece of music. It is essential data for DJs as they mix together multiple tracks, as tracks that are not tempo-matched will sound out of sync. BPM also has implications on what genre a piece of music is, though  there is plenty of room for debate. Many times, people will argue that the BPM is either 1/2 or 2 times as fast as a stated BPM---it's all about the pulse, and we all interpret it a little differently. 
+    
+    %p Click on any of the blue dots on the meter to listen to YouTube videos of different BPMs.
+
+  .span6  
+    #video-container.space-bottom
+      .divider6.yellow
+      %h3.main-color.yellow.edmmeter LISTEN TO SPECIFIC BPMs
+      .examplevideo
+        .putVideoHere
+        %p.putTitleHere Click on the blue dots on the meter to hear individual BPMs.
+        
+    .divider6.red
+    
+    %form.calculator.space-bottom{:alt => "Calculate the number of seconds between beats for a given BPM or time interval"}
+      %h3.main-color.red.edmmeter Calculate the # of seconds between beats:
+      .row
+        .span3
+          %input{:type=>"text", :name=>"bpmfield", :id=>"bpmautofill", :value=>"convertedBPM", "ng-model"=>"bpminput", "ng-change"=>"convertToTime()"} 
+          %label.rightside{:for=>"bpmfield"} BPM
+        .span3
+          %input{:type=>"text", :name=>"timefield", :id=>"timeautofill", :value=>"convertedTime", "ng-model"=>"timeinput", "ng-change"=>"convertToBPM()"}
+          %label.rightside{:for=>"timefield"} s
+
+    #blurb-container
+      .divider6.yellow
+      %h3.main-color.yellow.edmmeter.blurbtitle CHOPPED & SCREWED: 60-75 BPM
+      .blurb#blurb1
+        %p A genre that encourages putting a little syrup in your drank, Chopped & Screwed reduces the tempo of hip hop to a snail's pace. It comes out of Houston in the early 1990s. DJ Screw is probably the most well-known DJ of the genre, and there really is something syrup-y about it.
+
+      %h3.main-color.yellow.edmmeter.blurbtitle HIP-HOP / R&B / POP: 70-105 BPM
+      .blurb#blurb2
+        %p Spitting rhymes takes time, so hip hop and rap are slower than dance music. Hip hop is the origin of the DJ with turntablist pioneers like Terminator X (Public Enemy), DJ Kool Herc, and Jam Master Jay (Run DMC). Nowadays, hip hop beats are typically composed using software instead of vinyl and drum machines, but the attitude is the same. Pop's gotten a lot more EDM-y lately, sure, so I'm thinking Mariah Carey, old Britney Spears, Adele, that kinda stuff. R&B is the sound of smoooooth.
+        
+      %h3.main-color.yellow.edmmeter.blurbtitle MOOMBAHTON: 108-115 BPM
+      .blurb#blurb3
+        %p This brand of electronic music has serious flavor. Hand claps, Latin drum patterns, and reggaeton vibes characterize the relatively new genre of moombahton, a portmanteau of "moombah" and "reggaeton", coined in 2010 by Dave Nada who slowed down Afrojack's remix of "Moombah" (128 BPM) to 108 BPM. Now, Diplo and Dillon Francis are taking moombahton to new heights.
+        
+      %h3.main-color.yellow.edmmeter.blurbtitle HOUSE / TECHNO / ELECTRO: 115-135 BPM
+      .blurb#blurb4
+        %p Most electronic dance music sits right around 125 BPM in the classic genres of house and techno. It's easy to get your feet moving along to the four to the floor kicks, uplifting hihats, and catchy synth lines. Since there's such tiny tempo differences between house, techno, and electro tracks (and electro house, and acid house, and…), they tend to sync easily together to keep the mix going. The lower end of the range is home to a lot of nineties house, while a LOT of electronic music is closer to 130 BPM these days. Diplo wrote a whole book (okay, it's mostly pictures) about 128 BPM, which is (not coincidentially) a power of 2.
+        
+      %h3.main-color.yellow.edmmeter.blurbtitle DUBSTEP / TRAP: 135-170 BPM
+      .blurb#blurb5
+        %p Perhaps one of the reasons that some listeners think of dubstep as a "narrow" genre, where all songs sorta sound alike, is the fact that dubstep songs rarely deviate from a 140 BPM tempo. House sounds like it's on crack at this speed, while 70 BPM hip-hop and dub can layer nicely over dat bass. Trap is twice the speed of hip-hop for the same reason as dubstep. Explosive snare rolls and hi-hats set the pace while slow moving bass lines and kick drums keep it chill.
+
+      %h3.main-color.yellow.edmmeter.blurbtitle JUNGLE / DRUM N BASS / BREAKS: 160-??? BPM
+      .blurb#blurb6
+        %p As Drum and Bass makes a comeback and trap music is all over the scene (I'd like to take a moment to thank Happy Hardcore for not doing the same), it's possible that we just want our electronica faster and faster. Screw it, let's just listen to sine waves. Anyways, don't try to hum along to this crazy tempo: producers make Drum and Bass by accelerating funky drum patterns, as heard in the classic Amen Break. 
+        
+      %h3.main-color.yellow.edmmeter.blurbtitle GENRES THAT HAVE CHARACTERISTIC BPMs
+      .blurb#blurb7
+        %p As you tap, info about different genres and their characteristic BPM ranges will display here.
+
+    #trapify-link
+      .divider6.red
+      %h3.main-color.red.edmmeter.space-bottom Check out our trap text converter, 
+        %a.main-color.yellow{"ng-href" => "{{DJZ_WEBHOST_EXTENDED()}}/trapify/", :title => "TRAPIFY"}₮Я∆ⱣỊ₣Ϋ
+      %a.graphics{"ng-href" => "{{DJZ_WEBHOST_EXTENDED()}}/trapify/", :title => "Trapify"} 
+        %img#bpmmeter{:src => "{{DJZ_WEBHOST_EXTENDED()}}/assets/page/apps/trapifylogo_rounded.png", :alt => "Trapify App", :title => "TRAPIFY", :width => 200, :style => "display: block; border: none; margin: 0 auto;"}/ 
+
